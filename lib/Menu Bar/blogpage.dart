@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_blog/constants.dart';
+import 'package:flutter_blog/Constants/constants.dart';
 import 'package:search_page/search_page.dart';
-import 'Blog Data/blog_list.dart';
+import '../Blog Data/blog_list.dart';
 
 class Data {
   final String title, url, subtitle;
@@ -72,10 +72,7 @@ class _BlogPageState extends State<BlogPage> {
                 SizedBox(
                   height: 20,
                 ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(30.0, 0, 30.0, 0),
-                  child: Footer(),
-                ),
+                Footer(),
               ],
             ),
           ),

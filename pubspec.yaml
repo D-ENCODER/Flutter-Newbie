@@ -12,14 +12,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   animations: ^2.0.0
   responsive_framework: ^0.1.1
-  flutter_launcher_name: ^0.0.1
   google_fonts: ^2.1.0
   search_page: ^2.0.0+1
   animated_text_kit: ^4.2.1
   url_launcher: ^6.0.9
-
-flutter_launcher_name:
-  name: "Flutter Newbie"
+  firebase_core: ^1.5.0
 
 dev_dependencies:
   flutter_test:

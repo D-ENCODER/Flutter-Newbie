@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_blog/constants.dart';
+import 'package:flutter_blog/Constants/constants.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -17,6 +17,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           children: [
             MenuBar(),
+            Image.asset('assets/cover.png'),
             Padding(
               padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
               child: Column(
@@ -44,10 +45,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(30.0, 0, 30.0, 0),
-              child: Footer(),
+            SizedBox(
+              height: 20,
             ),
+            Footer(),
           ],
         ),
       ),

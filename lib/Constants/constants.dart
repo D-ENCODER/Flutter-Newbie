@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_blog/blogpage.dart';
-import 'package:flutter_blog/home.dart';
+import 'package:flutter_blog/Menu%20Bar/blogpage.dart';
+import 'package:flutter_blog/Menu%20Bar/home.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -132,6 +132,25 @@ class MenuBar extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: ReadMoreButton(
                           text: 'BLOG',
+                          colour: Color(0xff2b6767),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return BlogPage();
+                                },
+                              ),
+                            );
+                          }),
+                    ),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ReadMoreButton(
+                          text: 'SUGGESTIONS',
                           colour: Color(0xff2b6767),
                           onPressed: () {
                             Navigator.push(
@@ -330,52 +349,55 @@ class Footer extends StatelessWidget {
             height: 1,
             margin: EdgeInsets.only(bottom: 30),
             color: Color(0xFF2B6767)),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            GestureDetector(
-              onTap: () => launch('https://github.com/D-ENCODER'),
-              child: Image.asset(
-                'assets/github.png',
-                height: imgheight,
-                width: imgwidth,
+        Padding(
+          padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              GestureDetector(
+                onTap: () => launch('https://github.com/D-ENCODER'),
+                child: Image.asset(
+                  'assets/github.png',
+                  height: imgheight,
+                  width: imgwidth,
+                ),
               ),
-            ),
-            GestureDetector(
-              onTap: () =>
-                  launch('https://www.linkedin.com/in/het-joshi-a9b0801b5'),
-              child: Image.asset(
-                'assets/linkdin.png',
-                height: imgheight,
-                width: imgwidth,
+              GestureDetector(
+                onTap: () =>
+                    launch('https://www.linkedin.com/in/het-joshi-a9b0801b5'),
+                child: Image.asset(
+                  'assets/linkdin.png',
+                  height: imgheight,
+                  width: imgwidth,
+                ),
               ),
-            ),
-            GestureDetector(
-              onTap: () => launch(
-                  'https://www.upwork.com/freelancers/~01e754873e28efed44'),
-              child: Image.asset(
-                'assets/upwork.png',
-                height: imgheight,
-                width: imgwidth,
+              GestureDetector(
+                onTap: () => launch(
+                    'https://www.upwork.com/freelancers/~01e754873e28efed44'),
+                child: Image.asset(
+                  'assets/upwork.png',
+                  height: imgheight,
+                  width: imgwidth,
+                ),
               ),
-            ),
-            GestureDetector(
-              onTap: () => launch('https://twitter.com/Hetjoshi1684'),
-              child: Image.asset(
-                'assets/twitter.png',
-                height: imgheight,
-                width: imgwidth,
+              GestureDetector(
+                onTap: () => launch('https://twitter.com/Hetjoshi1684'),
+                child: Image.asset(
+                  'assets/twitter.png',
+                  height: imgheight,
+                  width: imgwidth,
+                ),
               ),
-            ),
-            GestureDetector(
-              onTap: () => launch('https://www.instagram.com/dencoder1/'),
-              child: Image.asset(
-                'assets/instagram.png',
-                height: imgheight,
-                width: imgwidth,
+              GestureDetector(
+                onTap: () => launch('https://www.instagram.com/dencoder1/'),
+                child: Image.asset(
+                  'assets/instagram.png',
+                  height: imgheight,
+                  width: imgwidth,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 40),

@@ -1,4 +1,5 @@
 - 👋 Hi, I’m @D-ENCODER (Flutter Developer)
+<<<<<<< HEAD
 - 👀 I’m interested in Flutter native cross-platform apps
 - 🌱 I’m currently learning data structures and algorithms
 - 💞️ I’m looking to collaborate on projects that I wanna make
@@ -6,6 +7,15 @@
 
 
 ## VS Code Extensions that i use
+=======
+- 👀 I’m interested in Flutter native cross platform apps
+- 🌱 I’m currently learning data structures and algorithms
+- 💞️ I’m looking to collaborate on Projects that i wanna make
+- 📫 How to reach me +91 7434076092
+
+
+## VS Code Extentions that i use
+>>>>>>> 382c62f3f2ed872dc5b6d1a959b3f9377be2bfc6
 - [Auto Rename Tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag)
 - [Abyss Theme](https://marketplace.visualstudio.com/items?itemName=gerane.Theme-Abyss)
 - [Awesome Flutter Snippets](https://marketplace.visualstudio.com/items?itemName=Nash.awesome-flutter-snippets)
@@ -24,4 +34,8 @@
 <!---
 D-ENCODER/D-ENCODER is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 You can click the Preview link to take a look at your changes.
+<<<<<<< HEAD
 --->
+=======
+--->
+>>>>>>> 382c62f3f2ed872dc5b6d1a959b3f9377be2bfc6
