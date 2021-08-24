@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_blog/Constants/constants.dart';
+import 'package:flutter_blog/Footer/footer.dart';
 import 'package:search_page/search_page.dart';
 import '../Blog Data/blog_list.dart';
+import 'listitem.dart';
+import 'menubar.dart';
 
 class Data {
   final String title, url, subtitle;

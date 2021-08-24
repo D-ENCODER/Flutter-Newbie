@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_blog/Menu%20Bar/blogpage.dart';
-import 'package:flutter_blog/Menu%20Bar/home.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 Color textPrimary = Color(0xFF2B6767);
 
@@ -45,175 +42,6 @@ class ReadMoreButton extends StatelessWidget {
         ),
       );
     });
-  }
-}
-
-class MenuBar extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Container(
-          margin: EdgeInsets.symmetric(vertical: 30),
-          child: Column(
-            children: <Widget>[
-              GestureDetector(
-                onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return MyHomePage();
-                    },
-                  ),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      flex: 3,
-                      child: Align(
-                        alignment: Alignment.centerRight,
-                        child: CircleAvatar(
-                          backgroundImage: AssetImage('assets/flutter.png'),
-                          backgroundColor: Color(0xffFFFFFF),
-                          radius: 30,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Expanded(
-                      flex: 5,
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          "Flutter Newbie",
-                          overflow: TextOverflow.clip,
-                          style: GoogleFonts.montserrat(
-                            color: textPrimary,
-                            fontSize: 50,
-                            letterSpacing: 3,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Container(
-                alignment: Alignment.center,
-                child: Wrap(
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ReadMoreButton(
-                          text: 'HOME',
-                          colour: Color(0xff2b6767),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) {
-                                  return MyHomePage();
-                                },
-                              ),
-                            );
-                          }),
-                    ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ReadMoreButton(
-                          text: 'BLOG',
-                          colour: Color(0xff2b6767),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) {
-                                  return BlogPage();
-                                },
-                              ),
-                            );
-                          }),
-                    ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ReadMoreButton(
-                          text: 'SUGGESTIONS',
-                          colour: Color(0xff2b6767),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) {
-                                  return BlogPage();
-                                },
-                              ),
-                            );
-                          }),
-                    ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ReadMoreButton(
-                          colour: Color(0xff2b6767),
-                          text: 'ABOUT',
-                          onPressed: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) {
-                            //       return MyHomePage();
-                            //     },
-                            //   ),
-                            // );
-                          }),
-                    ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ReadMoreButton(
-                        colour: Color(0xff2b6767),
-                        text: 'CONTACT US',
-                        onPressed: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) {
-                          //       return MyHomePage();
-                          //     },
-                          //   ),
-                          // );
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-        Container(
-            height: 1,
-            margin: EdgeInsets.only(bottom: 30),
-            color: Color(0xFF2B6767)),
-      ],
-    );
   }
 }
 
@@ -260,154 +88,6 @@ class ImageWrapper extends StatelessWidget {
   }
 }
 
-class ListItem extends StatelessWidget {
-  final String title;
-  final String? imageUrl;
-  final String? description;
-  final Function onpressed;
-
-  const ListItem(
-      {Key? key,
-      required this.onpressed,
-      required this.title,
-      required this.imageUrl,
-      required this.description})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.all(
-          Radius.circular(30),
-        ),
-      ),
-      child: Column(
-        children: <Widget>[
-          if (imageUrl != null)
-            Container(
-              child: ImageWrapper(
-                image: imageUrl!,
-              ),
-            ),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                margin: marginBottom12,
-                child: Text(
-                  title,
-                  style: headlineTextStyle,
-                ),
-              ),
-            ),
-          ),
-          if (description != null)
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  margin: marginBottom12,
-                  child: Text(
-                    description!,
-                    style: bodyTextStyle,
-                  ),
-                ),
-              ),
-            ),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                margin: marginBottom24,
-                child: ReadMoreButton(
-                  onPressed: onpressed,
-                  text: 'READ MORE',
-                  colour: Color(0xff2b6767),
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class Footer extends StatelessWidget {
-  final double imgheight = 70;
-  final double imgwidth = 50;
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-            height: 1,
-            margin: EdgeInsets.only(bottom: 30),
-            color: Color(0xFF2B6767)),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              GestureDetector(
-                onTap: () => launch('https://github.com/D-ENCODER'),
-                child: Image.asset(
-                  'assets/github.png',
-                  height: imgheight,
-                  width: imgwidth,
-                ),
-              ),
-              GestureDetector(
-                onTap: () =>
-                    launch('https://www.linkedin.com/in/het-joshi-a9b0801b5'),
-                child: Image.asset(
-                  'assets/linkdin.png',
-                  height: imgheight,
-                  width: imgwidth,
-                ),
-              ),
-              GestureDetector(
-                onTap: () => launch(
-                    'https://www.upwork.com/freelancers/~01e754873e28efed44'),
-                child: Image.asset(
-                  'assets/upwork.png',
-                  height: imgheight,
-                  width: imgwidth,
-                ),
-              ),
-              GestureDetector(
-                onTap: () => launch('https://twitter.com/Hetjoshi1684'),
-                child: Image.asset(
-                  'assets/twitter.png',
-                  height: imgheight,
-                  width: imgwidth,
-                ),
-              ),
-              GestureDetector(
-                onTap: () => launch('https://www.instagram.com/dencoder1/'),
-                child: Image.asset(
-                  'assets/instagram.png',
-                  height: imgheight,
-                  width: imgwidth,
-                ),
-              ),
-            ],
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 40),
-          child: TextBody(text: "Copyright © 2021"),
-        ),
-      ],
-    );
-  }
-}
-
 class TextBody extends StatelessWidget {
   final String text;
 
@@ -423,4 +103,51 @@ class TextBody extends StatelessWidget {
       ),
     );
   }
+}
+
+// ignore: must_be_immutable
+class SubHeading extends StatelessWidget {
+  String text;
+  SubHeading({
+    Key? key,
+    required this.text,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Text(
+        text,
+        style: textStyle().copyWith(fontSize: 20),
+      ),
+    );
+  }
+}
+
+// ignore: must_be_immutable
+class MainHeading extends StatelessWidget {
+  String text;
+  MainHeading({
+    Key? key,
+    required this.text,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Text(
+        text,
+        style: textStyle(),
+      ),
+    );
+  }
+}
+
+TextStyle textStyle() {
+  return TextStyle(
+    color: Color(0xff2b6767),
+    fontSize: 40,
+  );
 }
