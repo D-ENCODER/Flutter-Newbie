@@ -1,7 +1,7 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/Constants/constants.dart';
 import 'package:flutter_blog/Footer/footer.dart';
-
 import 'menubar.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -12,6 +12,34 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  @override
+  void initState() {
+    super.initState();
+    firebaseOnMessage();
+  }
+
+  void onFirebaseOpenedApp() {
+    FirebaseMessaging.onMessageOpenedApp.listen(
+      (event) {
+        print(event.notification!.title);
+      },
+    );
+  }
+
+  void firebaseOnMessage() {
+    FirebaseMessaging.onMessage.listen(
+      (message) {
+        final title = message.notification!.title;
+        final body = message.notification!.body;
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('$title\n$body'),
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

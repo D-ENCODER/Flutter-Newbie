@@ -1,11 +1,18 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/splash.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
 
-void main() {
+void main() async {
   runApp(MyApp());
+  FirebaseMessaging.instance.getToken().then(print);
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+}
+
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  print('Handling A background message ${message.notification!.title}');
 }
 
 MaterialColor myColor = MaterialColor(0xFF2b6767, color);
