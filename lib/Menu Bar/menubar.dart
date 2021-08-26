@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/Constants/constants.dart';
+import 'package:flutter_blog/Menu%20Bar/contactus.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'blogpage.dart';
 import 'home.dart';
@@ -147,14 +148,14 @@ class MenuBar extends StatelessWidget {
                         colour: Color(0xff2b6767),
                         text: 'CONTACT US',
                         onPressed: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) {
-                          //       return MyHomePage();
-                          //     },
-                          //   ),
-                          // );
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return ContactUsPage();
+                              },
+                            ),
+                          );
                         },
                       ),
                     ),

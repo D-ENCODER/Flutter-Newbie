@@ -151,3 +151,38 @@ TextStyle textStyle() {
     fontSize: 40,
   );
 }
+
+TextStyle fontStyle() {
+  return TextStyle(
+    color: Colors.white,
+    fontSize: 30,
+  );
+}
+
+InputDecoration inputMethod() {
+  return InputDecoration(
+    hintText: 'Enter your name',
+    hintStyle: TextStyle(
+      fontWeight: FontWeight.w100,
+      color: Colors.white,
+    ),
+    contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.all(
+        Radius.circular(32.0),
+      ),
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: Color(0xff52ab98), width: 1.0),
+      borderRadius: BorderRadius.all(
+        Radius.circular(32.0),
+      ),
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: Color(0xff52ab98), width: 2.0),
+      borderRadius: BorderRadius.all(
+        Radius.circular(32.0),
+      ),
+    ),
+  );
+}
