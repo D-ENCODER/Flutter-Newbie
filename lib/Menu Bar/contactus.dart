@@ -1,16 +1,10 @@
 import 'dart:async';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/Constants/constants.dart';
 import 'package:flutter_blog/Footer/footer.dart';
 import 'package:flutter_blog/Menu%20Bar/menubar.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
-
-void _doSomething() async {
-  Timer(Duration(seconds: 3), () {
-    _btnController.success();
-  });
-}
 
 class ContactUsPage extends StatefulWidget {
   const ContactUsPage({Key? key}) : super(key: key);
@@ -23,6 +17,11 @@ final RoundedLoadingButtonController _btnController =
     RoundedLoadingButtonController();
 
 class _ContactUsPageState extends State<ContactUsPage> {
+  String name = '';
+  String email = '';
+  String message = '';
+  String number = '';
+  final _firestore = FirebaseFirestore.instance;
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -56,103 +55,149 @@ class _ContactUsPageState extends State<ContactUsPage> {
                           ),
                         ),
                       ),
-                      Row(
+                      Column(
                         children: [
-                          Expanded(
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(0, 0, 0, 8),
-                                  child: Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text(
-                                      'Your Name:-',
-                                      style: fontStyle().copyWith(fontSize: 17),
-                                    ),
-                                  ),
-                                ),
-                                TextField(
-                                  style: TextStyle(color: Colors.white),
-                                  decoration: inputMethod(),
-                                ),
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(0, 8, 0, 8),
-                                  child: Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text(
-                                      'E-mail:-',
-                                      style: fontStyle().copyWith(fontSize: 17),
-                                    ),
-                                  ),
-                                ),
-                                TextField(
-                                  style: TextStyle(color: Colors.white),
-                                  keyboardType: TextInputType.emailAddress,
-                                  decoration: inputMethod()
-                                      .copyWith(hintText: 'Enter your E-mail'),
-                                ),
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(0, 8, 0, 8),
-                                  child: Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text(
-                                      'Phone-No.',
-                                      style: fontStyle().copyWith(fontSize: 17),
-                                    ),
-                                  ),
-                                ),
-                                TextField(
-                                  style: TextStyle(color: Colors.white),
-                                  keyboardType: TextInputType.number,
-                                  decoration: inputMethod().copyWith(
-                                      hintText: 'Enter your phone number'),
-                                ),
-                              ],
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 0, 0, 8),
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                'Your Name:-',
+                                style: fontStyle().copyWith(fontSize: 17),
+                              ),
                             ),
                           ),
-                          SizedBox(
-                            width: 10,
+                          TextField(
+                            onChanged: (value) {
+                              name = value;
+                            },
+                            style: TextStyle(color: Colors.white),
+                            decoration: inputMethod(),
                           ),
-                          Expanded(
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(0, 0, 0, 8),
-                                  child: Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text(
-                                      'Message:-',
-                                      style: fontStyle().copyWith(fontSize: 17),
-                                    ),
-                                  ),
-                                ),
-                                TextField(
-                                  minLines: 10,
-                                  maxLines: 50,
-                                  style: TextStyle(color: Colors.white),
-                                  decoration: inputMethod().copyWith(
-                                      hintText: 'Leave your message here !'),
-                                ),
-                              ],
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                'E-mail:-',
+                                style: fontStyle().copyWith(fontSize: 17),
+                              ),
                             ),
+                          ),
+                          TextField(
+                            onChanged: (value) {
+                              email = value;
+                            },
+                            style: TextStyle(color: Colors.white),
+                            keyboardType: TextInputType.emailAddress,
+                            decoration: inputMethod()
+                                .copyWith(hintText: 'Enter your E-mail'),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 8, 0, 8),
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                'Phone-No.',
+                                style: fontStyle().copyWith(fontSize: 17),
+                              ),
+                            ),
+                          ),
+                          TextField(
+                            onChanged: (value) {
+                              number = value;
+                            },
+                            style: TextStyle(color: Colors.white),
+                            keyboardType: TextInputType.number,
+                            decoration: inputMethod()
+                                .copyWith(hintText: 'Enter your phone number'),
                           ),
                         ],
                       ),
-                      RoundedLoadingButton(
-                        valueColor: Color(0xff52ab98),
-                        color: Colors.white,
-                        child: Text(
-                          'Tap me!',
-                          style: TextStyle(
-                            color: Color(0xff2b6767),
+                      Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 0, 0, 8),
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                'Message:-',
+                                style: fontStyle().copyWith(fontSize: 17),
+                              ),
+                            ),
                           ),
+                          TextField(
+                            onChanged: (value) {
+                              message = value;
+                            },
+                            minLines: 10,
+                            maxLines: 50,
+                            style: TextStyle(color: Colors.white),
+                            decoration: inputMethod().copyWith(
+                                hintText: 'Leave your message here !'),
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 8, 0, 0),
+                        child: RoundedLoadingButton(
+                          valueColor: Color(0xff52ab98),
+                          color: Colors.white,
+                          child: Text(
+                            'Tap me!',
+                            style: TextStyle(
+                              color: Color(0xff2b6767),
+                            ),
+                          ),
+                          controller: _btnController,
+                          onPressed: () {
+                            if (email != '' &&
+                                name != '' &&
+                                message != '' &&
+                                number != '') {
+                              try {
+                                _firestore.collection('Contact Form').add(
+                                  {
+                                    'E-mail': email,
+                                    'Message': message,
+                                    'Name': name,
+                                    'Phone No': number,
+                                  },
+                                );
+                                Timer(
+                                  Duration(seconds: 3),
+                                  () {
+                                    _btnController.success();
+                                  },
+                                );
+                              } catch (e) {
+                                print(e);
+                                Timer(
+                                  Duration(seconds: 3),
+                                  () {
+                                    _btnController.error();
+                                  },
+                                );
+                              }
+                            } else {
+                              Timer(
+                                Duration(seconds: 3),
+                                () {
+                                  _btnController.error();
+                                },
+                              );
+                            }
+                            Timer(Duration(seconds: 4), () {
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      super.widget,
+                                ),
+                              );
+                            });
+                          },
                         ),
-                        controller: _btnController,
-                        onPressed: _doSomething,
                       )
                     ],
                   ),
