@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_blog/Constants/constants.dart';
 import 'package:flutter_blog/Footer/footer.dart';
 import 'package:flutter_blog/Menu%20Bar/menubar.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 class ContactUsPage extends StatefulWidget {
@@ -144,7 +145,7 @@ class _ContactUsPageState extends State<ContactUsPage> {
                           valueColor: Color(0xff52ab98),
                           color: Colors.white,
                           child: Text(
-                            'Tap me!',
+                            'Send',
                             style: TextStyle(
                               color: Color(0xff2b6767),
                             ),
@@ -170,6 +171,14 @@ class _ContactUsPageState extends State<ContactUsPage> {
                                     _btnController.success();
                                   },
                                 );
+                                Fluttertoast.showToast(
+                                  msg: 'Message sent',
+                                  textColor: Colors.white,
+                                  webPosition: "center",
+                                  webShowClose: true,
+                                  webBgColor: "#4caf50",
+                                  timeInSecForIosWeb: 5,
+                                );
                               } catch (e) {
                                 print(e);
                                 Timer(
@@ -185,6 +194,14 @@ class _ContactUsPageState extends State<ContactUsPage> {
                                 () {
                                   _btnController.error();
                                 },
+                              );
+                              Fluttertoast.showToast(
+                                msg: 'Please fill all the fields ',
+                                textColor: Colors.white,
+                                webPosition: "center",
+                                webShowClose: true,
+                                webBgColor: "#f44336",
+                                timeInSecForIosWeb: 5,
                               );
                             }
                             Timer(Duration(seconds: 4), () {

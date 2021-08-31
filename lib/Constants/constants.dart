@@ -163,7 +163,7 @@ InputDecoration inputMethod() {
   return InputDecoration(
     hintText: 'Enter your name',
     hintStyle: TextStyle(
-      fontWeight: FontWeight.w100,
+      fontWeight: FontWeight.normal,
       color: Colors.white,
     ),
     contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
