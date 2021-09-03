@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blog/Constants/constants.dart';
 import 'package:flutter_blog/Menu%20Bar/contactus.dart';
+import 'package:flutter_blog/Menu%20Bar/suggestions.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'blogpage.dart';
 import 'home.dart';
@@ -114,29 +115,10 @@ class MenuBar extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                 builder: (context) {
-                                  return BlogPage();
+                                  return SuggestionsPage();
                                 },
                               ),
                             );
-                          }),
-                    ),
-                    SizedBox(
-                      width: 15,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ReadMoreButton(
-                          colour: Color(0xff2b6767),
-                          text: 'ABOUT',
-                          onPressed: () {
-                            // Navigator.push(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) {
-                            //       return MyHomePage();
-                            //     },
-                            //   ),
-                            // );
                           }),
                     ),
                     SizedBox(

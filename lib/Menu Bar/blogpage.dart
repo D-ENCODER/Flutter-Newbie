@@ -35,6 +35,7 @@ class _BlogPageState extends State<BlogPage> {
       body: Stack(
         children: [
           SingleChildScrollView(
+            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
             child: Column(
               children: [
                 MenuBar(),
@@ -105,7 +106,6 @@ class _BlogPageState extends State<BlogPage> {
     final blogs = allData.where((data) {
       final blogTitle = data.title.toLowerCase();
       final searchLower = query.toLowerCase();
-
       return blogTitle.contains(searchLower);
     }).toList();
     setState(() {
@@ -140,20 +140,13 @@ class _SearchWidgetState extends State<SearchWidget> {
     final styleHint = TextStyle(color: Colors.black54);
     final style = widget.text.isEmpty ? styleHint : styleActive;
 
-    return
-        // Container(
-        //   height: 42,
-        //   margin: const EdgeInsets.fromLTRB(16, 16, 16, 16),
-        //   decoration: BoxDecoration(
-        //     borderRadius: BorderRadius.circular(12),
-        //     color: Colors.white,
-        //     border: Border.all(color: Colors.black26),
-        //   ),
-        //   padding: const EdgeInsets.symmetric(horizontal: 8),
-        // child:
-        TextField(
+    return TextField(
       controller: controller,
       decoration: inputMethod().copyWith(
+        hintStyle: TextStyle(
+          fontWeight: FontWeight.normal,
+          color: Colors.grey.withOpacity(1),
+        ),
         prefixIcon: Icon(Icons.search, color: Color(0xff2b6767)),
         suffixIcon: widget.text.isNotEmpty
             ? GestureDetector(

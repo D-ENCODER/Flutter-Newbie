@@ -7,20 +7,20 @@ import 'package:flutter_blog/Menu%20Bar/menubar.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 
-class ContactUsPage extends StatefulWidget {
-  const ContactUsPage({Key? key}) : super(key: key);
+class SuggestionsPage extends StatefulWidget {
+  const SuggestionsPage({Key? key}) : super(key: key);
 
   @override
-  _ContactUsPageState createState() => _ContactUsPageState();
+  _SuggestionsPageState createState() => _SuggestionsPageState();
 }
 
 final RoundedLoadingButtonController _btnController =
     RoundedLoadingButtonController();
 
-class _ContactUsPageState extends State<ContactUsPage> {
+class _SuggestionsPageState extends State<SuggestionsPage> {
   String name = '';
   String email = '';
-  String message = '';
+  String suggestion = '';
   String number = '';
   final _firestore = FirebaseFirestore.instance;
   @override
@@ -52,7 +52,7 @@ class _ContactUsPageState extends State<ContactUsPage> {
                         child: Align(
                           alignment: Alignment.center,
                           child: Text(
-                            'Contact Form',
+                            'Suggestions',
                             style: fontStyle(),
                           ),
                         ),
@@ -130,7 +130,7 @@ class _ContactUsPageState extends State<ContactUsPage> {
                           ),
                           TextField(
                             onChanged: (value) {
-                              message = value;
+                              suggestion = value;
                             },
                             minLines: 10,
                             maxLines: 50,
@@ -155,13 +155,13 @@ class _ContactUsPageState extends State<ContactUsPage> {
                           onPressed: () {
                             if (email != '' &&
                                 name != '' &&
-                                message != '' &&
+                                suggestion != '' &&
                                 number != '') {
                               try {
-                                _firestore.collection('Contact Form').add(
+                                _firestore.collection('Suggestions').add(
                                   {
                                     'E-mail': email,
-                                    'Message': message,
+                                    'Message': suggestion,
                                     'Name': name,
                                     'Phone No': number,
                                   },
